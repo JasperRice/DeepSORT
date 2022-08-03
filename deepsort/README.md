@@ -1,5 +1,10 @@
 # DeepSORT Library
 
+## Requirements
+```bash
+sudo apt-get install libeigen3-dev
+```
+
 ## Design Philosophy
 
 ### Member Declaration

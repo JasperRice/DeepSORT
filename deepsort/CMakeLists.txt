@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 
 # Project
 set(PROJECT DeepSORT)
@@ -23,6 +23,9 @@ set(CURRENT ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CURRENT}/include)
 aux_source_directory(${CURRENT}/src SRC)
 add_library(${PROJECT} SHARED ${SRC})
+
+# CPM
+include(${CURRENT}/cmake/CPM.cmake)
 
 # Test
 add_subdirectory(${CURRENT}/test)
