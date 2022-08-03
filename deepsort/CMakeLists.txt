@@ -25,7 +25,7 @@ aux_source_directory(${CURRENT}/src SRC)
 add_library(${PROJECT} SHARED ${SRC})
 
 # CPM
-include(${CURRENT}/cmake/CPM.cmake)
+include(${CURRENT}/cpm.cmake)
 
 # Test
 add_subdirectory(${CURRENT}/test)
