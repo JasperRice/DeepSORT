@@ -13,19 +13,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin/debug)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin/release)
+set(CURRENT ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Eigen
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
+# CPM
+include(${CURRENT}/cpm.cmake) # CPM
+
 # Current
-set(CURRENT ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CURRENT}/include)
 aux_source_directory(${CURRENT}/src SRC)
 add_library(${PROJECT} SHARED ${SRC})
-
-# CPM
-include(${CURRENT}/cpm.cmake)
 
 # Test
 add_subdirectory(${CURRENT}/test)

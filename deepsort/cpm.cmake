@@ -1,7 +1,17 @@
 include(${CURRENT}/cmake/CPM.cmake)
 
 # openjpeg-2.5, which is required by opencv
-include_directories($/usr/include/openjpeg-2.5/)
+CPMAddPackage(
+  NAME openjpeg
+  GITHUB_REPOSITORY uclouvain/openjpeg
+  GIT_TAG v2.5.0
+  VERSION v2.5.0
+  OPTIONS
+  "BUILD_JAVA OFF"
+  "BUILD_PKGCONFIG_FILES ON"
+  "CMAKE_BUILD_TYPE Release"
+  "CMAKE_INSTALL_PREFIX /usr"
+)
 
 # opencv-4.6
 CPMAddPackage(

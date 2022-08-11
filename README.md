@@ -21,3 +21,9 @@ sudo make install && make clean
 ```
 
 Other packages are added by CPM in [cpm.cmake](deepsort/cpm.cmake).
+
+## Build
+Simply run:
+```bash
+sh build.sh
+```
