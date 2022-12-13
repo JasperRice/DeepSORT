@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.14)
+
+# Project
+set(TEST Test)
+project(${TEST} VERSION 1.0)
+
+# Standard
+set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin/debug)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin/release)
+set(CURRENT ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Current
+aux_source_directory(${CURRENT} SRC)
+add_executable(test_kalman_filter ${SRC})
+target_link_libraries(test_kalman_filter ${PROJECT})
