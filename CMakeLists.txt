@@ -21,3 +21,4 @@ include(CMakePrintHelpers)
 
 # Subdirectories
 add_subdirectory(${CURRENT}/deepsort)
+add_subdirectory(${CURRENT}/filter)

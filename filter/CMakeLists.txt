@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Project
-set(PROJECT DeepSORT)
+set(PROJECT Filter)
 project(${PROJECT} VERSION 1.0)
 
 # Standard
@@ -18,9 +18,6 @@ set(CURRENT ${CMAKE_CURRENT_SOURCE_DIR})
 # Eigen
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
-
-# CPM
-include(${CURRENT}/cpm.cmake)
 
 # Current
 include_directories(${CURRENT}/include)

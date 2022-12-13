@@ -20,7 +20,7 @@ find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # CPM
-include(${CURRENT}/cpm.cmake)
+# include(${CURRENT}/cpm.cmake)
 
 # Current
 include_directories(${CURRENT}/include)
