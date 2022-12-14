@@ -1,5 +1,6 @@
 # Build
 build
+core.*
 
 # VSCode
 .vscode/settings.json

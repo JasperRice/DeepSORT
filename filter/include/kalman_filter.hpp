@@ -14,6 +14,14 @@ class KalmanFilter {
   int dim_u;
 
  public:
+  const float sigma_x = 3.12152113e-01;
+  const float sigma_y = 5.72281037e-02;
+  const float sigma_vx = 6.29019664e+00;
+  const float sigma_vy = 1.41461263e+00;
+  const float sigma_ax = 1.49371453e+02;
+  const float sigma_ay = 3.81161792e+01;
+
+ public:
   MatrixXfr B;  // Control Matrix
   MatrixXfr F;  // Predict Matrix
   MatrixXfr H;  // Observation Matrix

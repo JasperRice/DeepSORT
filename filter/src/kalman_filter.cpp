@@ -4,6 +4,7 @@ KalmanFilter::KalmanFilter(int dim_x, int dim_z, int dim_u) {
   this->dim_x = dim_x;
   this->dim_z = dim_z;
   this->dim_u = dim_u;
+  init();
 }
 
 KalmanFilter::~KalmanFilter() {}
@@ -36,7 +37,7 @@ void KalmanFilter::predict(const MatrixXfr &u) {
 
 void KalmanFilter::update(const MatrixXfr &z) {
   MatrixXfr S = H * P * H.transpose() + R;
-  K = P * H * S.inverse();
+  K = P * H.transpose() * S.inverse();
   X = X + K * (z - H * X);
   P = (I - K * H) * P;
 }

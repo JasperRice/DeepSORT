@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "cpp build active file",
+      "command": "make",
+      "args": [
+        "-j8"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/build/"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build"
+    }
+  ]
+}
