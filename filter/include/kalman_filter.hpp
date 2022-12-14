@@ -14,23 +14,16 @@ class KalmanFilter {
   int dim_u;
 
  public:
-  const float sigma_x = 3.12152113e-01;
-  const float sigma_y = 5.72281037e-02;
-  const float sigma_vx = 6.29019664e+00;
-  const float sigma_vy = 1.41461263e+00;
-  const float sigma_ax = 1.49371453e+02;
-  const float sigma_ay = 3.81161792e+01;
-
- public:
-  MatrixXfr B;  // Control Matrix
-  MatrixXfr F;  // Predict Matrix
-  MatrixXfr H;  // Observation Matrix
-  MatrixXfr I;  // Identity Matrix
-  MatrixXfr K;  // Kalman Gain
-  MatrixXfr P;  // Covariance
-  MatrixXfr Q;  // Process Noise
-  MatrixXfr R;  // Measurement Noise
-  MatrixXfr X;  // State
+  MatrixXfr B;  // Control transition matrix
+  MatrixXfr F;  // State transition matrix
+  MatrixXfr H;  // Measurement function
+  MatrixXfr I;  // Identity matrix
+  MatrixXfr K;  // Kalman gain of the update step
+  MatrixXfr P;  // Covariance matrix
+  MatrixXfr Q;  // Process noise matrix
+  MatrixXfr R;  // Measurement noise matrix
+  MatrixXfr S;  // Systen uncertaintly projected to measurement space
+  MatrixXfr X;  // State estimate vector
 
  public:
   KalmanFilter(int dim_x, int dim_z, int dim_u = 0);
@@ -41,6 +34,19 @@ class KalmanFilter {
   virtual void update(const MatrixXfr &z);
 };
 
+class ExtendedKalmanFilter : public KalmanFilter {
+ public:
+  MatrixXfr hx;
+
+ public:
+  ExtendedKalmanFilter(int dim_x, int dim_z, int dim_u = 0);
+  ~ExtendedKalmanFilter();
+  virtual void update(const MatrixXfr &z,
+                      const MatrixXfr (*HJacobian)(MatrixXfr),
+                      const MatrixXfr (*Hx)(MatrixXfr));
+};
+
 using KalmanFilterPtr = std::shared_ptr<KalmanFilter>;
+using ExtendedKalmanFilterPtr = std::shared_ptr<ExtendedKalmanFilter>;
 
 #endif

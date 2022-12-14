@@ -3,7 +3,7 @@
 
 #include "kalman_filter.hpp"
 
-int main(int argc, char const *argv[]) {
+void test_kalman_filter() {
   KalmanFilterPtr kf(new KalmanFilter(3, 1, 1));
   float dt = 1.0 / 30.0;
   kf->B << 0.0, 0.0, 0.0;
@@ -42,6 +42,13 @@ int main(int argc, char const *argv[]) {
               << "y[" << i << "] = " << z.transpose() << ", x_hat[" << i
               << "] = " << kf->X.transpose() << std::endl;
   }
+}
 
+void test_extended_kalman_filter() {
+  ExtendedKalmanFilterPtr ekf(new ExtendedKalmanFilter(5, 1, 1));
+}
+
+int main(int argc, char const *argv[]) {
+  test_extended_kalman_filter();
   return 0;
 }

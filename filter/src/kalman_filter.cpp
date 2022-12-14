@@ -36,8 +36,25 @@ void KalmanFilter::predict(const MatrixXfr &u) {
 }
 
 void KalmanFilter::update(const MatrixXfr &z) {
-  MatrixXfr S = H * P * H.transpose() + R;
+  S = H * P * H.transpose() + R;
   K = P * H.transpose() * S.inverse();
   X = X + K * (z - H * X);
+  P = (I - K * H) * P;
+}
+
+ExtendedKalmanFilter::ExtendedKalmanFilter(int dim_x, int dim_z, int dim_u)
+    : KalmanFilter(dim_x, dim_z, dim_u) {}
+
+ExtendedKalmanFilter::~ExtendedKalmanFilter() {}
+
+void ExtendedKalmanFilter::update(const MatrixXfr &z,
+                                  const MatrixXfr (*HJacobian)(MatrixXfr),
+                                  const MatrixXfr (*Hx)(MatrixXfr)) {
+  H = HJacobian(X);
+  S = H * P * H.transpose() + R;
+  K = P * H.transpose() * S.inverse();
+
+  hx = Hx(X);
+  X = X + K * hx;
   P = (I - K * H) * P;
 }
